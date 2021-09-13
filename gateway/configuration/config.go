@@ -33,6 +33,16 @@ import (
 	"google.golang.org/grpc/credentials"
 )
 
+// TLSConfig represents TLS client configuration
+type TLSConfig struct {
+	Enabled bool
+
+	CertFile           string
+	KeyFile            string
+	CAFile             string
+	InsecureSkipVerify bool
+}
+
 // GatewayConfig contains all of the configurables and tunables for various components of the gateway.
 // Many of these options may be set via command-line flags. See main.go for details on flags that
 // are available.
@@ -181,6 +191,20 @@ type TargetLoadersConfig struct {
 	SimpleFile string `json:"simple_file"`
 	// SimpleFileReloadInterval is the interval to check SimpleFile for changes.
 	SimpleFileReloadInterval time.Duration `json:"simple_file_reload_interval"`
+
+	// ConsulServer is the address and port of the ConsulServer
+	ConsulServer string
+	// ConsulPrefix is the prefix to read the k,v for each target
+	ConsulPrefix string
+
+	// ConsulTLSCreds are the gNMI Server TLS credentials. You must specify either this or both
+	ConsulTLSCreds credentials.TransportCredentials
+	// ConsulTLSCert is the path to the file containing the PEM-encoded x509 Consul server TLS certificate.
+	ConsulTLSCert string `json:"consul_tls_cert"`
+	// ConsulTLSCert is the path to the file containing the PEM-encoded x509 Consul server TLS key.
+	ConsulTLSKey string `json:"consul_tls_key"`
+	// ConsulToken is the token to authenticate to Consul
+	ConsulToken string `json:"consul_token"`
 }
 
 func NewDefaultGatewayConfig() *GatewayConfig {
