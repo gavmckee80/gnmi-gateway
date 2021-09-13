@@ -10,7 +10,7 @@ require (
 	github.com/golang/protobuf v1.4.3
 	github.com/google/gnxi v0.0.0-20200831120455-017df4756f78
 	github.com/google/go-cmp v0.5.5
-	github.com/hashicorp/consul/api v1.5.0 // indirect
+	github.com/hashicorp/consul/api v1.5.0
 	github.com/hashicorp/vault v1.8.2
 	github.com/hashicorp/vault-plugin-secrets-kv v0.9.0
 	github.com/hashicorp/vault/api v1.1.2-0.20210713235431-1fc8af4c041f
